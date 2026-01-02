@@ -1,7 +1,5 @@
 import torch
 
-from tqdm import tqdm
-
 
 def train(model, train_loader, optimizer, loss_fn, device, num_epochs, val_loader):
     for epoch in range(num_epochs):
@@ -30,7 +28,7 @@ def train(model, train_loader, optimizer, loss_fn, device, num_epochs, val_loade
 
 def evaluate(model, test_loader, loss_fn, device):
     model.eval()
-    total_loss = 0.0
+    total_loss = 0
     num_samples = 0
 
     with torch.no_grad():

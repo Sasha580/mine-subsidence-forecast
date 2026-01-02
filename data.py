@@ -71,11 +71,11 @@ def load_data(path, n_hist, val_steps=1, test_steps=1, start_index=0):
     train_end = total_steps - val_steps - test_steps
     y_train_raw = y_raw[:train_end]
 
-    # Compute per-x statistics on the training set
+    # Compute per-x statistics on the training set only
     mean_x = y_train_raw.mean(dim=0)
     std_x = y_train_raw.std(dim=0)
 
-    # Standardize full series using train stats
+    # Standardize the entire series using train stats
     scaler = Standardizer(mean_x, std_x)
     y_std = scaler.encode(y_raw)
 
@@ -87,5 +87,6 @@ def load_data(path, n_hist, val_steps=1, test_steps=1, start_index=0):
         test_steps=test_steps,
         start_index=start_index,
     )
+
     return train_ds, val_ds, test_ds, scaler
 
