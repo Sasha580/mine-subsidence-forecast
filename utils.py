@@ -1,11 +1,9 @@
 import random
-import numpy as np
 import torch
 
 
 def set_seed(seed: int = 42):
     random.seed(seed)                     # Python RNG
-    np.random.seed(seed)                  # NumPy RNG
     torch.manual_seed(seed)               # CPU RNG
     if torch.cuda.is_available():
         torch.cuda.manual_seed(seed)

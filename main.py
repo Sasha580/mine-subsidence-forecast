@@ -32,7 +32,7 @@ def main():
     loss_fn = nn.SmoothL1Loss()
     num_epochs = 24
 
-    train(
+    train_losses, val_losses = train(
         model=model,
         train_loader=train_loader,
         optimizer=optimizer,
@@ -42,6 +42,10 @@ def main():
         val_loader=val_loader,
     )
 
+    fig1 = plot_training(train_losses, val_losses)
+    fig1.show()
+    fig1.savefig("training_curves.png")
+
     preds = predict(model, test_loader, device)
     preds = scaler.decode(preds)
 
@@ -50,9 +54,17 @@ def main():
     df["Pred_last"] = preds[-1].cpu().numpy()
 
     # Plot and save
-    fig = plot_profiles(df)
-    fig.show()
-    fig.savefig("profiles.png", dpi=300, bbox_inches="tight")
+    title = "Profiles data with predictions"
+    #TODO
+    # caption = (
+    #     "Subsidence profiles for a particular mine measured between 2000 and 2020. "
+    #     "The solid lines correspond to the available training, validation, and test data, "
+    #     "while the dashed line shows the prediction of the final profile."
+    # )
+
+    fig2 = plot_profiles(df, title=title, caption=caption)
+    fig2.show()
+    fig2.savefig("profiles.png", dpi=300, bbox_inches="tight")
 
 
 if __name__ == "__main__":

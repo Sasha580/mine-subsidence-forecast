@@ -2,6 +2,8 @@ import torch
 
 
 def train(model, train_loader, optimizer, loss_fn, device, num_epochs, val_loader):
+    train_losses = []
+    val_losses = []
     for epoch in range(num_epochs):
         model.train()
         running_loss = 0.0
@@ -24,6 +26,9 @@ def train(model, train_loader, optimizer, loss_fn, device, num_epochs, val_loade
             f"Epoch [{epoch + 1}/{num_epochs}] "
             f"Train Loss: {epoch_loss:.5f} | Val Loss: {val_loss:.5f}"
         )
+        train_losses.append(epoch_loss)
+        val_losses.append(val_loss)
+    return train_losses, val_losses
 
 
 def evaluate(model, test_loader, loss_fn, device):

@@ -61,9 +61,6 @@ def split_time_series(data, n_hist, val_steps=1, test_steps=1, start_index=0):
 def load_data(path, n_hist, val_steps=1, test_steps=1, start_index=0):
     df = pd.read_csv(path, delimiter=";", decimal=",")
 
-    # First column is x-axis (keep for plotting)
-    x = df.iloc[:, 0].to_numpy()
-
     # Remaining columns: profiles over time [time_steps, mine_len]
     y_raw = torch.tensor(df.iloc[:, 1:].to_numpy().T, dtype=torch.float32)
 

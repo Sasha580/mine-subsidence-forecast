@@ -90,6 +90,12 @@ python main.py
 
 ![Example prediction](profiles.png)
 
+## Training Curves
+
+The figure below shows the training and validation loss over epochs.
+
+![Training curves](training_curves.png)
+
 ---
 
 ## Status and Future Work
