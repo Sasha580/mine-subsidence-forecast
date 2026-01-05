@@ -11,7 +11,6 @@ def main():
 
     device = get_device()
     path = "approximated_data.csv"
-    path = "interpol.csv"
 
     n_hist = 5
     train_ds, val_ds, test_ds, scaler = load_data(
