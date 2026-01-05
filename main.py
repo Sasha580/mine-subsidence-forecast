@@ -56,7 +56,7 @@ def main():
     # Plot and save
     title = "Profiles data with predictions"
 
-    fig2 = plot_profiles(df, title=title, caption=caption)
+    fig2 = plot_profiles(df, title=title)
     fig2.show()
     fig2.savefig("profiles.png", dpi=300, bbox_inches="tight")
 
