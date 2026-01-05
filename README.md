@@ -88,6 +88,9 @@ python main.py
 
 ## Example prediction
 
+The graphs shows the subsidence profelis of some particular mine measured between 2000 and 2020. The solid lines correspond to the available training, validation, and test data, while the dashed line
+shows the prediction of the final profile.
+
 ![Example prediction](profiles.png)
 
 ## Training Curves

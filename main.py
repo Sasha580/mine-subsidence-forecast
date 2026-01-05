@@ -11,6 +11,7 @@ def main():
 
     device = get_device()
     path = "approximated_data.csv"
+    path = "interpol.csv"
 
     n_hist = 5
     train_ds, val_ds, test_ds, scaler = load_data(
@@ -18,7 +19,7 @@ def main():
         n_hist=n_hist,
         val_steps=1,
         test_steps=1,
-        start_index=2,
+        start_index=0,
     )
 
     batch_size = 1
@@ -55,12 +56,6 @@ def main():
 
     # Plot and save
     title = "Profiles data with predictions"
-    #TODO
-    # caption = (
-    #     "Subsidence profiles for a particular mine measured between 2000 and 2020. "
-    #     "The solid lines correspond to the available training, validation, and test data, "
-    #     "while the dashed line shows the prediction of the final profile."
-    # )
 
     fig2 = plot_profiles(df, title=title, caption=caption)
     fig2.show()
